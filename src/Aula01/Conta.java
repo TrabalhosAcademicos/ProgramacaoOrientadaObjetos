@@ -14,30 +14,20 @@ import java.util.List;
  */
 public class Conta {
     private double saldo;
-    private int numConta;
-    private List<Cliente> listaCliente = new ArrayList();
+    private int numero;
+    private final List<Cliente> listaCliente = new ArrayList();
     
-   public void adicionarCliente(Cliente c){
-       listaCliente.add(c);
-   }
-   
-   public Cliente recuperaClientePeloNome(){
-   
-       return listaCliente.get(0);
+   public void adicionarCliente(Cliente cliente){
+       listaCliente.add(cliente);
    }
     
-    public boolean saca(Double valor){
-    
-        if(verificaTransacao(valor)){
-            saldo = saldo - valor;
-            return true;
-        }
-        return false;
+    private boolean verificaTransacao(Double valor){
+        return saldo >= valor;
     }
 
-    public Conta(double saldo, int numConta) {
+    public Conta(double saldo, int conta) {
         this.saldo = saldo;
-        this.numConta = numConta;
+        this.numero = conta;
     }
 
     public double getSaldo() {
@@ -48,18 +38,26 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public int getNumConta() {
-        return numConta;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNumConta(int numConta) {
-        this.numConta = numConta;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
+     public boolean saca(Double valor){
     
+        if(verificaTransacao(valor)){
+            this.saldo = saldo - valor;
+            return true;
+        }
+        return false;
+    }
+     
     public void depositar(Double valor){
     
-        saldo = saldo + valor;
+        this.saldo = saldo + valor;
     }
     
     public void transfere(Conta conta, Double valor){
@@ -68,10 +66,13 @@ public class Conta {
         conta.depositar(valor);
         
     }
-    
-    private boolean verificaTransacao(Double valor){
-        return saldo >= valor;
+
+    @Override
+    public String toString() {
+        return "Conta{" + "saldo=" + saldo + ", numero=" + numero + ", listaCliente=" + listaCliente + '}';
     }
+    
+    
 
 
     

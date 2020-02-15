@@ -12,7 +12,10 @@ import Conta.ClassConta;
  *
  * @author alunodev07
  */
+
 public class ClassProgama {
+
+/*
     public static void main(String[] args) {                        
         System.out.println("Cliente 001----------------------------------");
         ClassCliente cliente001 = new ClassCliente();
@@ -58,5 +61,5 @@ public class ClassProgama {
         System.out.println("---------------------------------------------");
         
     }
-    
+    */
 }

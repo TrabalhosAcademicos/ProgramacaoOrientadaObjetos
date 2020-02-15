@@ -12,23 +12,49 @@ package Aula01;
 public class UsaSistema {
     public static void main(String[] args) {
         
-        Cliente c = new Cliente ("Teste");
-        Conta c1 = new Conta(1000D, 1);
-        System.out.println("Saldo atual c1: " + c1.getSaldo());
-        c1.depositar(500D);
-        System.out.println("Saldo atual c1: " + c1.getSaldo());
+        Cliente cliente = new Cliente ("Jaksciley","Rua das Oliveiras","111.111.111.11");
+               
+        Conta conta01 = new Conta(0, 1);
+        conta01.adicionarCliente(cliente);
         
-        Conta c2 = new Conta(0D, 1);
-        System.out.println("Saldo atual c2: " + c2.getSaldo());
-        c1.transfere (c2, 200D);
         
-        System.out.println("Saldo atual c1: " + c1.getSaldo());
-        System.out.println("Saldo atual c2: " + c2.getSaldo());
+        System.out.println(cliente);
+        System.out.println(conta01);
         
-        c1.adicionarCliente(c);
+        System.out.println("Saldo atual conta01: " + conta01.getSaldo());
+        System.out.println("Deposito de R$ 500");
+        conta01.depositar(500.00);
+        System.out.println("Saldo atual conta01: " + conta01.getSaldo());
+        System.out.println("Saque de R$ 300");
+        conta01.saca(300.00);
+        System.out.println("Saldo atual conta01: " + conta01.getSaldo());
+               
         
-        Cliente cliRec = c1.recuperaClientePeloNome();
-        System.out.println(cliRec.getNome());
         
+        
+        cliente = new Cliente ("Jeorge","Rua das Candongas","222.222.222.22");
+               
+        Conta conta02 = new Conta(10000.00, 2);
+        conta02.adicionarCliente(cliente);
+        
+        
+        System.out.println(cliente);
+        System.out.println(conta02);
+        
+        System.out.println("Saldo atual conta02: " + conta02.getSaldo());
+        System.out.println("Deposito de R$ 1500");
+        conta02.depositar(1500.00);
+        System.out.println("Saldo atual conta02: " + conta02.getSaldo());
+        System.out.println("Saque de R$ 880.00");
+        conta02.saca(880.00);
+        System.out.println("Saldo atual conta02: " + conta02.getSaldo());
+        
+        
+        
+        System.out.println("Transferencia de Saldo R$ 900");
+        conta02.transfere (conta01, 900.00);
+        System.out.println("Saldo atual conta01: " + conta01.getSaldo());
+        System.out.println("Saldo atual conta02: " + conta02.getSaldo());
+       
     }
 }
